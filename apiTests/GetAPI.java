@@ -9,7 +9,7 @@ import io.restassured.specification.RequestSpecification;
 
 public class GetAPI {
 
-	@Test(groups = "smoke")
+	@Test(groups = "positiveScenario")
 	public void testGetAPI() {
 		String endPoint = "library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI";
 		RestAssured.baseURI = "https://developer.apple.com/";
@@ -21,7 +21,7 @@ public class GetAPI {
 		Assert.assertEquals(response.getStatusCode(), 200);
 	}
 
-	@Test
+	@Test(groups = "negativeScenarioFor404")
 	public void testGetAPINegative() {
 		String endPoint = "library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI1";
 		RestAssured.baseURI = "https://developer.apple.com/";
@@ -33,7 +33,7 @@ public class GetAPI {
 		Assert.assertEquals(response.getStatusCode(), 404);
 	}
 
-	@Test
+	@Test(groups = "negativeScenarioFor403")
 	public void testGetAPINoContent() {
 		String endPoint = "library/archive/documentation/AudioVideo/Conceptual";
 		RestAssured.baseURI = "https://developer.apple.com/";
